@@ -21,7 +21,9 @@ const sess = {
 
 //setup Handlebars.js
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
+
 
 //middlewares
 app.use(express.json());
