@@ -152,6 +152,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
+    console.log(req.params.id);
     Post.destroy({
         where: {
             id: req.params.id
@@ -159,7 +160,7 @@ router.delete('/:id', withAuth, (req, res) => {
     })
         .then(dbPostData => {
             if (!dbPostData) {
-                res.status(400).json({ message: 'No post found with this id' });
+                res.status(404).json({ message: 'No post found with this id' });
                 return;
             }
             res.json(dbPostData);
